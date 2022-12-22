@@ -2,17 +2,19 @@ import styled from "styled-components";
 import { applyStyleModifiers } from "styled-components-modifiers";
 import { colors } from "../utils/colors";
 import PropTypes from "prop-types";
+import { CgAirplane } from "react-icons/cg";
+import { jShine, ohHappiness } from "../utils/themes";
 
 const BUTTON_MODIFIERS = {
   small: () => `
     font-size: 14px;
-    padding: 16px 48px;
-    border-radius: 12px;
+    padding: 8px 26px;
+    border-radius: 24px;
   `,
   regular: () => `
     font-size: 22px;
-    padding: 20px 56px;
-    border-radius: 24px
+    padding: 18px 48px;
+    border-radius: 24px;
   `,
   large: () => `
     font-size: 27px;
@@ -54,9 +56,9 @@ export const StyledSecondaryButton = styled(StyledButton)`
   color: ${colors.black};
   position: relative;
   border: 4px solid transparent;
-  border-radius: 16px;
+  border-radius: 24px;
   background-clip: padding-box;
-  padding: 10px;
+  padding: 5px;
 
   &:after {
     position: absolute;
@@ -77,7 +79,26 @@ export const StyledSecondaryButton = styled(StyledButton)`
     background-clip: padding-box;
   }
 
+  &:disabled {
+    position: relative;
+    border: 4px solid transparent;
+    border-radius: 24px;
+    background-clip: padding-box;
+  }
+
   &:hover:after {
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    left: -4px;
+    right: -4px;
+    background: ${(props) => props.theme.primaryColor};
+    content: "";
+    z-index: -1;
+    border-radius: 24px;
+  }
+
+  &:disabled:after {
     position: absolute;
     top: -4px;
     bottom: -4px;
@@ -98,14 +119,16 @@ export const PrimaryButton = (props) => {
     <StyledPrimaryButton
       {...props}
       style={{
-        display: "flex",
+        display: `${props.icon ? "flex" : ""}`,
         alignItems: "center",
-        gap: "6px",
+        gap: "12px",
         flexDirection: `${props.isLeft ? "row-reverse" : "row"}`,
       }}
     >
       {props.children}
-      <Icon size={`${props.modifiers == "small" ? "25" : "35"}`} />
+      {props.icon && (
+        <Icon size={`${props.modifiers == "small" ? "25" : "35"}`} />
+      )}
     </StyledPrimaryButton>
   );
 };
@@ -134,4 +157,18 @@ export const SecondaryButton = (props) => {
 
 SecondaryButton.propTypes = {
   icon: PropTypes.element,
+};
+
+PrimaryButton.defaultProps = {
+  isLeft: false,
+  children: "Click Me",
+  theme: ohHappiness,
+  modifiers: "regular",
+};
+
+SecondaryButton.defaultProps = {
+  isLeft: false,
+  children: "Click Me",
+  theme: ohHappiness,
+  icon: CgAirplane,
 };

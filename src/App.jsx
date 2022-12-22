@@ -7,16 +7,7 @@ import { CgAirplane } from "react-icons/cg";
 function App() {
   return (
     <div className="App">
-      <ThemeProvider theme={jShine}>
-        <SecondaryButton
-          icon={CgAirplane}
-          isLeft={false}
-          modifiers="large"
-          disabled
-        >
-          Click
-        </SecondaryButton>
-      </ThemeProvider>
+      <PrimaryButton icon={CgAirplane}>Click</PrimaryButton>
     </div>
   );
 }
