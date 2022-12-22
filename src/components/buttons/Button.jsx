@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { applyStyleModifiers } from "styled-components-modifiers";
 import { colors } from "../utils/colors";
 import PropTypes from "prop-types";
-import { CgAirplane } from "react-icons/cg";
-import { jShine, ohHappiness } from "../utils/themes";
+import { CgFileDocument } from "react-icons/cg";
+import { ohHappiness } from "../utils/themes";
 
 const BUTTON_MODIFIERS = {
   small: () => `
@@ -53,7 +53,8 @@ export const StyledPrimaryButton = styled(StyledButton)`
 
 export const StyledSecondaryButton = styled(StyledButton)`
   background: ${colors.white};
-  color: ${colors.black};
+  // passing textColor props
+  color: ${(props) => props.color};
   position: relative;
   border: 4px solid transparent;
   border-radius: 24px;
@@ -143,14 +144,16 @@ export const SecondaryButton = (props) => {
     <StyledSecondaryButton
       {...props}
       style={{
-        display: "flex",
+        display: `${props.icon ? "flex" : ""}`,
         alignItems: "center",
         gap: "12px",
         flexDirection: `${props.isLeft ? "row-reverse" : "row"}`,
       }}
     >
       {props.children}
-      <Icon size={`${props.modifiers == "small" ? "25" : "35"}`} />
+      {props.icon && (
+        <Icon size={`${props.modifiers == "small" ? "25" : "35"}`} />
+      )}
     </StyledSecondaryButton>
   );
 };
@@ -170,5 +173,6 @@ SecondaryButton.defaultProps = {
   isLeft: false,
   children: "Click Me",
   theme: ohHappiness,
-  icon: CgAirplane,
+  modifiers: "regular",
+  color: `${colors.black}`,
 };

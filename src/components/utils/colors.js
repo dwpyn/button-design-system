@@ -6,5 +6,5 @@ export const colors = {
     ohHappiness: "linear-gradient(90deg, #00B09B 0%, #96C93D 100%)",
 
     white: "#F4F4F4",
-    black: "#151515",
+    black: "#383838",
 }

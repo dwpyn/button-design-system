@@ -1,9 +1,8 @@
-// Button.stories.js|jsx
-
 import React from "react";
 
 import { SecondaryButton } from "../components/buttons/Button";
 import { colors } from "../components/utils/colors";
+import { CgFileDocument } from "react-icons/cg";
 
 export default {
   title: "Button/Secondary",
@@ -48,11 +47,12 @@ const Template = (args) => (
   <SecondaryButton {...args}>{args.children}</SecondaryButton>
 );
 
-export const SecondaryButtonNoIcon = Template.bind({});
-SecondaryButtonNoIcon.args = {
+export const SecondaryButtonWithIcon = Template.bind({});
+SecondaryButtonWithIcon.args = {
   isLeft: false,
   modifiers: "regular",
   children: "click me",
   disabled: false,
   color: `${colors.black}`,
+  icon: CgFileDocument,
 };

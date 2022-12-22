@@ -7,7 +7,7 @@ import { CgAirplane } from "react-icons/cg";
 function App() {
   return (
     <div className="App">
-      <PrimaryButton icon={CgAirplane}>Click</PrimaryButton>
+      <SecondaryButton>test</SecondaryButton>
     </div>
   );
 }
