@@ -1,6 +1,6 @@
 # Button Design System
 
-Personal excercise to learn CSS-in-JS system and design system.
+Personal excercise to learn CSS-in-JS system and design system, bootsrapped using vite.
 Button UI reference: https://www.figma.com/community/file/959105434620688979
 
 This repo contain button component design system using:
